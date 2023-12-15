@@ -1,6 +1,7 @@
+import Home from "@/components/Home/Home";
 import Image from "next/image";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main>
       <div className="side_nav">xoxo</div>
@@ -36,7 +37,7 @@ export default function Home() {
             <div className="header_user">L</div>
           </div>
         </header>
-        <div className="main_body">corousel</div>
+        <Home />
       </div>
     </main>
   );
