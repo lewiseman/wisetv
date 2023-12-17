@@ -27,7 +27,12 @@ export default function SideNav() {
           />
           Home
         </a>
-        <a href="/explore" className={`${styles.side_nav_link}`}>
+        <a
+          href="/explore"
+          className={`${styles.side_nav_link}  ${
+            pathname === "/explore" && styles.side_nav_active
+          }`}
+        >
           <Image
             src={
               pathname === "/explore"
@@ -41,7 +46,12 @@ export default function SideNav() {
           />
           Explore
         </a>
-        <a href="/search" className={`${styles.side_nav_link}`}>
+        <a
+          href="/search"
+          className={`${styles.side_nav_link}  ${
+            pathname === "/search" && styles.side_nav_active
+          }`}
+        >
           <Image
             src="/nav/search.svg"
             className={`${styles.side_nav_link_icon}`}

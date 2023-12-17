@@ -1,3 +1,9 @@
+import MainPageNav from "@/components/all/MainPageNav";
+
 export default function ExplorePage() {
-  return <div>Explore</div>;
+  return (
+    <MainPageNav>
+      <div>explore</div>
+    </MainPageNav>
+  );
 }

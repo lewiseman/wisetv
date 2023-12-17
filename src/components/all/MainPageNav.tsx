@@ -77,23 +77,6 @@ const MainPageNav: React.FC<MainPageNavProps> = ({ children }) => {
               />
             </button>
           </div>
-          <div className="header_bottom">
-            <div className="header_bottom_sections">
-              <a href="/" className="header_bottom_sections_link">
-                {pathname === "/" && (
-                  <div className="active_header_section"></div>
-                )}
-                TV Show
-              </a>
-              <a href="/movies">
-                {pathname === "/movies" && (
-                  <div className="active_header_section"></div>
-                )}
-                Movie
-              </a>
-            </div>
-            <div className="header_user">L</div>
-          </div>
         </header>
         {children}
       </div>
