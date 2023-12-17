@@ -1,0 +1,35 @@
+.side_nav_container {
+    margin: 20px 0 20px 20px;
+}
+
+.side_nav_title {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding-top: 1px;
+}
+
+.side_nav_group_body {
+    margin-left: 16px;
+}
+
+.side_nav_link {
+    text-decoration: none;
+    color: #aaaaaa;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 16px;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 4px;
+}
+
+
+.side_nav_group:not(:first-child) {
+    margin-top: 30px;
+}
+
+.side_nav_active {
+    color: var(--primary-color);
+}

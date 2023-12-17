@@ -1,4 +1,6 @@
-:root {}
+:root {
+  --primary-color: #5971ff;
+}
 
 html {
   color-scheme: dark;
@@ -36,7 +38,7 @@ a {
   height: 100vh;
   position: absolute;
   z-index: 100;
-  background-color: red;
+  background-color: rgb(51, 51, 53);
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
 }

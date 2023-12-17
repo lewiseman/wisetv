@@ -4,6 +4,7 @@ import { useEffect, useRef, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
 import Image from "next/image";
+import SideNav from "./SideNav";
 
 interface MainPageNavProps {
   children: ReactNode;
@@ -52,7 +53,7 @@ const MainPageNav: React.FC<MainPageNavProps> = ({ children }) => {
   return (
     <main>
       <div className="side_nav" ref={mySideNavRef}>
-        xoxo
+        <SideNav />
       </div>
       <div className="main_content">
         <header>
