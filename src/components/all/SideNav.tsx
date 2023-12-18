@@ -24,11 +24,16 @@ export default function SideNav() {
         <a
           href="/"
           className={`${styles.side_nav_link}  ${
-            pathname === "/" && styles.side_nav_active
+            (pathname === "/" || pathname === "/movies") &&
+            styles.side_nav_active
           }`}
         >
           <Image
-            src={pathname === "/" ? "/nav/home_active.svg" : "/nav/home.svg"}
+            src={
+              pathname === "/" || pathname === "/movies"
+                ? "/nav/home_active.svg"
+                : "/nav/home.svg"
+            }
             className={`${styles.side_nav_link_icon}`}
             alt="home"
             width={24}
