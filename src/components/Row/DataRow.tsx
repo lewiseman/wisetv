@@ -1,12 +1,58 @@
 "use client";
 import Image from "next/image";
 import "./DataRow.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
-export default function DataRow() {
+interface Movie {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface DataRowProps {
+  title: string;
+  link: string;
+}
+
+export default function DataRow({ title, link }: DataRowProps) {
+  const [data, setData] = useState<Movie[] | null>(null);
   const numbers: number[] = Array.from({ length: 20 }, (_, i) => i + 1);
   const sliderRef = useRef<HTMLDivElement>(null);
   const sliderContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const url = "https://api.themoviedb.org/3/" + link;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzVjNDZjYWU0MTUxZDk5OTViY2UxZTg5NTNkYTE3MiIsInN1YiI6IjYwMDA4NzIyYmU0YjM2MDAzZTRmMGFhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bcxfxaKUgab2zPyvHy87M1BCXp_SmxpsC4MedqnZVEA",
+      },
+    };
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url, options);
+        const res = await response.json();
+        setData(res.results as Movie[]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -22,7 +68,7 @@ export default function DataRow() {
 
   return (
     <div className="data_row_container">
-      <p>Popular</p>
+      <p>{title}</p>
       <div className="data_row" ref={sliderContainer}>
         <div className="data_row_nav left">
           <button onClick={scrollLeft}>
@@ -36,11 +82,17 @@ export default function DataRow() {
           </button>
         </div>
         <div className="data_row_slider" ref={sliderRef}>
-          {numbers.map((number) => (
-            <div className="data_row_item" key={number}>
-              {number}
-            </div>
-          ))}
+          {data &&
+            data.map((movie) => (
+              <a href="/" className="data_row_item" key={movie.id}>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                  alt="menu"
+                  width={175}
+                  height={297}
+                />
+              </a>
+            ))}
         </div>
         <div className="data_row_nav right">
           <button onClick={scrollRight}>
@@ -56,21 +108,4 @@ export default function DataRow() {
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="data_row_slider" ref={sliderRef}>
-          <button onClick={scrollLeft}>Left</button>
-          <div
-            className="numbers-container"
-            style={{ transform: `translateX(${scrollPosition}px)` }}
-          >
-            {numbers.map((number) => (
-              <div className="number-item" key={number}>
-                {number}
-              </div>
-            ))}
-          </div>
-          <button onClick={scrollRight}>Right</button>
-        </div> */
 }
