@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import Image from "next/image";
 import SideNav from "./SideNav";
+import SideSearch from "./SideSearch";
 
 interface MainPageNavProps {
   children: ReactNode;
@@ -79,6 +80,9 @@ const MainPageNav: React.FC<MainPageNavProps> = ({ children }) => {
           </div>
         </header>
         {children}
+      </div>
+      <div className="side_nav_search">
+        <SideSearch />
       </div>
     </main>
   );

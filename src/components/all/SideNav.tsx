@@ -8,6 +8,15 @@ export default function SideNav() {
   const pathname = usePathname();
   return (
     <div className={`${styles.side_nav_container}`}>
+      <div className="side_nav_img">
+        <Image
+          src="/full_logo.png"
+          className={`${styles.side_nav_link_icon}`}
+          alt="home"
+          width={114}
+          height={24}
+        />
+      </div>
       <div className={`${styles.side_nav_group}`}>
         <p className={`${styles.side_nav_title}`}>MENU</p>
       </div>

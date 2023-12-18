@@ -22,6 +22,7 @@ export default function DataRow() {
 
   return (
     <div className="data_row_container">
+      <p>Popular</p>
       <div className="data_row" ref={sliderContainer}>
         <div className="data_row_nav left">
           <button onClick={scrollLeft}>

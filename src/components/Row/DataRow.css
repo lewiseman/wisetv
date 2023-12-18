@@ -2,6 +2,12 @@
     padding: 16px;
 }
 
+.data_row_container>p {
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
 .data_row {
     position: relative;
     max-width: 68rem;
@@ -49,4 +55,10 @@
 .data_row_nav.right {
     right: 0;
     background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.7));
+}
+
+@media screen and (min-width: 500px) {
+    .data_row {
+        width: 100%;
+    }
 }
