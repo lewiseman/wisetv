@@ -8,7 +8,7 @@ export default function TvShowHomePage() {
     <MainPageNav>
       <HomeTopNav />
       <div className="main_body">
-        <BannerSlider />
+        <BannerSlider link="trending/tv/day?language=en-US" />
         {/* <DataRow link="trending/movie/day?language=en-US" title="Trending" /> */}
         <DataRow link="tv/popular?language=en-US&page=1" title="Popular" />
         <DataRow link="tv/top_rated?language=en-US&page=1" title="Top Rated" />

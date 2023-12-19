@@ -8,7 +8,7 @@ export default function MoviesHomePage() {
     <MainPageNav>
       <HomeTopNav />
       <div className="main_body">
-        <BannerSlider />
+        <BannerSlider link="trending/movie/day?language=en-US" />
         {/* <DataRow link="trending/movie/day?language=en-US" title="Trending" /> */}
         <DataRow link="movie/popular?language=en-US&page=1" title="Popular" />
         <DataRow
