@@ -1,6 +1,7 @@
 "use client";
 import styles from "./BannerSlider.module.css";
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 interface Movie {
   adult: boolean;
@@ -13,7 +14,7 @@ interface Movie {
   popularity: number;
   poster_path: string;
   release_date: string;
-  title: string;
+  name: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
@@ -50,7 +51,8 @@ export default function BannerSlider({ link }: { link: string }) {
         <div className={`${styles.carousel_slider}`}>
           {data &&
             data.map((item, index) => (
-              <div
+              <a
+                href=""
                 key={item.id}
                 id={`carousel_${index}`}
                 className={`${styles.carousel_item}`}
@@ -59,7 +61,19 @@ export default function BannerSlider({ link }: { link: string }) {
                   className={`${styles.carousel_image}`}
                   src={`https://image.tmdb.org/t/p/w1280/${item.backdrop_path}`}
                 />
-              </div>
+                <div className={`${styles.carousel_item_info}`}>
+                  <h2 className={`${styles.carousel_item_title}`}>
+                    {item.name}
+                  </h2>
+                  <p className={`${styles.carousel_item_rating}`}>
+                    {String(item.vote_average).slice(0, 3)}{" "}
+                    <Image src="/star.svg" width={15} height={15} alt="" />
+                  </p>
+                  <p className={`${styles.carousel_item_overview}`}>
+                    {item.overview}
+                  </p>
+                </div>
+              </a>
             ))}
         </div>
         <div className={`${styles.carousel_nav}`}>
