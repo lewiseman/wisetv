@@ -15,9 +15,11 @@ interface Movie {
   poster_path: string;
   release_date: string;
   name: string;
+  title: string;
   video: boolean;
   vote_average: number;
   vote_count: number;
+  media_type: string;
 }
 
 export default function BannerSlider({ link }: { link: string }) {
@@ -52,7 +54,7 @@ export default function BannerSlider({ link }: { link: string }) {
           {data &&
             data.map((item, index) => (
               <a
-                href=""
+                href={item.media_type === "movie" ? `movies/${item.id}` : ""}
                 key={item.id}
                 id={`carousel_${index}`}
                 className={`${styles.carousel_item}`}
@@ -63,7 +65,7 @@ export default function BannerSlider({ link }: { link: string }) {
                 />
                 <div className={`${styles.carousel_item_info}`}>
                   <h2 className={`${styles.carousel_item_title}`}>
-                    {item.name}
+                    {item.media_type === "movie" ? item.title : item.name}
                   </h2>
                   <p className={`${styles.carousel_item_rating}`}>
                     {String(item.vote_average).slice(0, 3)}{" "}
